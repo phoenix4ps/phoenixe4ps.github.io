@@ -1,16 +1,77 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en" manifest="psfree_lapse.cache">
 <head>
     <meta charset="UTF-8">
-    <title>صفحة تهكير PS4 الخاصة بي</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PS4 Host</title>
     <style>
-        body { background-color: #121212; color: white; text-align: center; font-family: Arial; }
-        button { background-color: #007bff; color: white; padding: 15px; border: none; border-radius: 5px; cursor: pointer; }
+        body {
+            background-color: #252526;
+            background-image: url('icon0.png');
+            background-size: cover;
+            color: #cccccc;
+            font-family: sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        #jailbreak-btn {
+            background-color: #555555;
+            color: white;
+            padding: 15px 40px;
+            border: 2px solid #3c3c3c;
+            border-radius: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        #console-box {
+            background-color: rgba(30, 30, 30, 0.9);
+            color: #8cccccc;
+            border: 1px solid #3c3c3c;
+            border-radius: 12px;
+            padding: 20px;
+            width: 85%;
+            max-width: 500px;
+            min-height: 180px;
+            font-family: monospace;
+            text-align: left;
+            direction: ltr;
+        }
+
+        .log-entry { margin: 5px 0; }
     </style>
 </head>
 <body>
-    <h1>أهلاً بك في صفحة التهكير الخاصة بي</h1>
-    <p>اختر الـ Payload المناسب لجهازك:</p>
-    <button onclick="alert('سيتم تفعيل GoldHEN قريباً!')">تشغيل GoldHEN</button>
+
+    <h1 style="color: white;">PS4 Host</h1>
+
+    <button id="jailbreak-btn" onclick="startExploit()">Start Jailbreak</button>
+
+    <div id="console-box">
+        <div id="messages">Waiting for input...</div>
+    </div>
+
+    <script>
+        function printMsg(text) {
+            const msgDiv = document.getElementById("messages");
+            msgDiv.innerHTML += "<div class='log-entry'>> " + text + "</div>";
+        }
+
+        function startExploit() {
+            document.getElementById("messages").innerHTML = ""; 
+            printMsg("Starting Exploit..."); 
+            setTimeout(() => { printMsg("Checking System..."); }, 1000);
+            setTimeout(() => { printMsg("Triggering WebKit..."); }, 2500);
+            setTimeout(() => { printMsg("Done! ✅"); }, 4000);
+        }
+    </script>
+
 </body>
 </html>
