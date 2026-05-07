@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>PHOENIX GAME</title>
+    
+    <!-- Link the exploit files you uploaded -->
+    <script src="psfree_lapse_shared.js"></script>
+    <script src="psfree.js"></script>
+
     <style>
         body {
             background-color: #000000;
@@ -20,7 +25,6 @@
             align-items: center;
         }
 
-        /* Main Title */
         h1 {
             color: white;
             font-size: 18px;
@@ -28,7 +32,6 @@
             text-transform: uppercase;
         }
 
-        /* Subtitle */
         .subtitle {
             color: #888;
             font-size: 11px;
@@ -36,7 +39,6 @@
             letter-spacing: 1px;
         }
 
-        /* Jailbreak Button */
         #jailbreak-btn {
             background-color: #005cf8;
             color: white;
@@ -53,7 +55,6 @@
             background-color: #0046bc;
         }
 
-        /* Status Box */
         #console-box {
             background-color: rgba(20, 20, 20, 0.85);
             border-top: 1px solid #333;
@@ -64,7 +65,7 @@
             font-family: monospace;
             text-align: left;
             font-size: 10px;
-            overflow: hidden;
+            overflow-y: auto;
         }
 
         .log-entry { margin: 1px 0; color: #999; }
@@ -85,13 +86,21 @@
         function printMsg(text) {
             const msgDiv = document.getElementById("messages");
             msgDiv.innerHTML += "<div class='log-entry'>> " + text + "</div>";
+            msgDiv.scrollTop = msgDiv.scrollHeight;
         }
 
         function startExploit() {
             document.getElementById("messages").innerHTML = ""; 
             printMsg("Initializing PHOENIX GAME Host..."); 
-            setTimeout(() => { printMsg("Looking for exploit..."); }, 800);
-            setTimeout(() => { printMsg("Jailbreak Ready!"); }, 1800);
+            
+            // This calls the actual exploit function from psfree.js
+            try {
+                setTimeout(function() {
+                    run_psfree(); 
+                }, 500);
+            } catch(e) {
+                printMsg("Error: psfree scripts not loaded properly.");
+            }
         }
     </script>
 
