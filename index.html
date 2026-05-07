@@ -6,11 +6,11 @@
     <title>PS4 Host</title>
     <style>
         body {
-            background-color: #252526;
+            background-color: #1a1a1a;
             background-image: url('icon0.png');
             background-size: cover;
             color: #cccccc;
-            font-family: sans-serif;
+            font-family: Arial, sans-serif;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -20,37 +20,52 @@
             margin: 0;
         }
 
-        #jailbreak-btn {
-            background-color: #555555;
+        /* Smaller Title */
+        h1 {
             color: white;
-            padding: 15px 40px;
-            border: 2px solid #3c3c3c;
-            border-radius: 10px;
-            font-size: 20px;
-            cursor: pointer;
+            font-size: 28px;
             margin-bottom: 20px;
         }
 
-        #console-box {
-            background-color: rgba(30, 30, 30, 0.9);
-            color: #8cccccc;
+        /* Smaller Button */
+        #jailbreak-btn {
+            background-color: #444444;
+            color: white;
+            padding: 10px 35px;
             border: 1px solid #3c3c3c;
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-bottom: 25px;
+            transition: 0.2s;
+        }
+
+        #jailbreak-btn:hover {
+            background-color: #555555;
+        }
+
+        /* Console styling */
+        #console-box {
+            background-color: rgba(15, 15, 15, 0.95);
+            color: #cccccc;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 15px;
             width: 85%;
-            max-width: 500px;
-            min-height: 180px;
+            max-width: 420px;
+            min-height: 250px;
             font-family: monospace;
             text-align: left;
             direction: ltr;
+            font-size: 14px;
         }
 
-        .log-entry { margin: 5px 0; }
+        .log-entry { margin: 3px 0; }
     </style>
 </head>
 <body>
 
-    <h1 style="color: white;">PS4 Host</h1>
+    <h1>PS4 Host</h1>
 
     <button id="jailbreak-btn" onclick="startExploit()">Start Jailbreak</button>
 
@@ -69,7 +84,7 @@
             printMsg("Starting Exploit..."); 
             setTimeout(() => { printMsg("Checking System..."); }, 1000);
             setTimeout(() => { printMsg("Triggering WebKit..."); }, 2500);
-            setTimeout(() => { printMsg("Done! ✅"); }, 4000);
+            setTimeout(() => { printMsg("Done!"); }, 4000);
         }
     </script>
 
