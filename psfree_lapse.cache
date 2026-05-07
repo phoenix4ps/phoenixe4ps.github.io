@@ -1,1 +1,11 @@
+CACHE MANIFEST
+# v1.0 - Phoenix Game Host
+
+index.html
+psfree.js
+psfree_lapse_shared.js
+payload.bin
+
+NETWORK:
+*
 
