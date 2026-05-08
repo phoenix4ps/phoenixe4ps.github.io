@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PHOENIX GAME - Installing Cache</title>
+    <title>PHOENIX GAME - Loading</title>
     <style>
         body {
             background-color: #000000;
-            color: #ffd700; /* Golden text */
+            color: #ffd700;
             font-family: Arial, sans-serif;
             margin: 0;
             display: flex;
@@ -16,44 +16,47 @@
             justify-content: center;
             height: 100vh;
             overflow: hidden;
-            
-            /* Phoenix Background with Pulse */
-            background-image: url('icon0.png');
-            background-size: 280px;
-            background-repeat: no-repeat;
-            background-position: center center;
-            animation: phoenix-glow 3s infinite ease-in-out;
         }
 
-        /* Animated Glow Effect */
-        @keyframes phoenix-glow {
-            0% { filter: drop-shadow(0 0 5px rgba(255, 69, 0, 0.5)); transform: scale(1); }
-            50% { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)); transform: scale(1.03); }
-            100% { filter: drop-shadow(0 0 5px rgba(255, 69, 0, 0.5)); transform: scale(1); }
+        .phoenix-layer {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 280px;
+            height: 280px;
+            background-image: url('icon0.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: -1;
+            animation: phoenix-pulse-glow 3s infinite ease-in-out;
+        }
+
+        @keyframes phoenix-pulse-glow {
+            0% { filter: drop-shadow(0 0 5px rgba(255, 69, 0, 0.5)); }
+            50% { filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.8)); }
+            100% { filter: drop-shadow(0 0 5px rgba(255, 69, 0, 0.5)); }
         }
 
         h1 {
-            font-size: 22px;
+            font-size: 20px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
-            z-index: 10;
         }
 
-        /* Progress Bar Container */
         #progress-container {
-            width: 80%;
-            max-width: 400px;
+            width: 75%;
+            max-width: 350px;
             height: 6px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             border: 1px solid #333;
             overflow: hidden;
-            z-index: 10;
         }
 
-        /* Fire & Gold Animated Bar */
         #progress-bar {
             width: 0%;
             height: 100%;
@@ -67,32 +70,23 @@
             font-size: 12px;
             color: #ffffff;
             font-family: monospace;
-            letter-spacing: 1px;
-            z-index: 10;
-            text-shadow: 1px 1px 2px #000;
-        }
-
-        .loading-text { animation: pulse 2s infinite; }
-        @keyframes pulse {
-            0% { opacity: 0.5; }
-            50% { opacity: 1; }
-            100% { opacity: 0.5; }
         }
     </style>
 </head>
 <body>
 
-    <h1 class="loading-text">Phoenix Game</h1>
+    <div class="phoenix-layer"></div>
+
+    <h1>Phoenix Game</h1>
     
     <div id="progress-container">
         <div id="progress-bar"></div>
     </div>
 
-    <div id="status">Installing Offline Cache: <span id="percentage">0%</span></div>
+    <div id="status">Installing Cache: <span id="percentage">0%</span></div>
 
     <script>
         var appCache = window.applicationCache;
-
         appCache.onprogress = function(e) {
             if (e.lengthComputable) {
                 var percent = Math.round((e.loaded / e.total) * 100);
@@ -100,21 +94,13 @@
                 document.getElementById('percentage').innerHTML = percent + '%';
             }
         };
-
         appCache.oncached = function() {
-            document.getElementById('status').innerHTML = "Success! Loading Phoenix Host...";
-            setTimeout(function(){ location.href = "index.html"; }, 2000);
+            document.getElementById('status').innerHTML = "Success! Loading Host...";
+            setTimeout(function(){ location.href = "index.html"; }, 1500);
         };
-
-        appCache.onupdateready = function() {
-            appCache.swapCache();
-            location.reload();
-        };
-
         appCache.onerror = function() {
-            document.getElementById('status').innerHTML = "Error: Check connection or PS4 storage.";
+            document.getElementById('status').innerHTML = "Error: Check connection.";
         };
     </script>
-
 </body>
 </html>
