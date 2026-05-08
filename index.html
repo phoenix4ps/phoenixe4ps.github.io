@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>PHOENIX GAME</title>
     
-    <!-- Link to the exploit scripts -->
     <script src="psfree_lapse_shared.js"></script>
     <script src="psfree.js"></script>
 
     <style>
-        /* Main Layout */
         body {
             background-color: #000000;
             color: #cccccc;
@@ -22,31 +20,28 @@
             align-items: center;
             min-height: 100vh;
             overflow: hidden;
-            
-            /* Phoenix Background Setup */
-            background-image: url('icon0.png');
-            background-size: 320px;
-            background-repeat: no-repeat;
-            background-position: center 65%;
-            
-            /* Animated Glow Effect */
-            animation: phoenix-pulse 3s infinite ease-in-out;
         }
 
-        /* Gold Pulse Animation */
-        @keyframes phoenix-pulse {
-            0% { 
-                filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.4)); 
-                transform: scale(1); 
-            }
-            50% { 
-                filter: drop-shadow(0 0 25px rgba(255, 165, 0, 0.8)); 
-                transform: scale(1.02); 
-            }
-            100% { 
-                filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.4)); 
-                transform: scale(1); 
-            }
+        /* Isolated Phoenix layer for specific glowing effect */
+        .phoenix-layer {
+            position: fixed;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 320px;
+            height: 320px;
+            background-image: url('icon0.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: -1; 
+            animation: phoenix-pulse-glow 3s infinite ease-in-out;
+        }
+
+        @keyframes phoenix-pulse-glow {
+            0% { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.4)); opacity: 0.8; }
+            50% { filter: drop-shadow(0 0 35px rgba(255, 140, 0, 0.9)); opacity: 1; }
+            100% { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.4)); opacity: 0.8; }
         }
 
         h1 {
@@ -54,17 +49,16 @@
             font-size: 18px;
             margin: 0;
             text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
 
         .subtitle {
-            color: #888888;
+            color: #888;
             font-size: 11px;
             margin-bottom: 15px;
             letter-spacing: 1px;
         }
 
-        /* Jailbreak Button */
         #jailbreak-btn {
             background-color: #005cf8;
             color: white;
@@ -75,28 +69,20 @@
             font-weight: bold;
             cursor: pointer;
             margin-bottom: 12px;
-            box-shadow: 0 0 15px rgba(0, 92, 248, 0.4);
             z-index: 10;
-            transition: 0.3s;
         }
 
-        #jailbreak-btn:hover {
-            background-color: #0046bc;
-            transform: translateY(-2px);
-        }
-
-        /* Console/Status Box */
         #console-box {
-            background-color: rgba(10, 10, 10, 0.85);
-            border-top: 1px solid #333;
-            border-bottom: 1px solid #333;
-            width: 100%; 
+            background-color: rgba(10, 10, 10, 0.9);
+            border: 1px solid #333;
+            width: 90%; 
+            max-width: 450px;
             height: 90px;
-            padding: 10px 15px;
+            padding: 10px;
             font-family: monospace;
             text-align: left;
             font-size: 11px;
-            color: #aaaaaa;
+            color: #aaa;
             z-index: 10;
             overflow-y: auto;
         }
@@ -105,6 +91,8 @@
     </style>
 </head>
 <body>
+
+    <div class="phoenix-layer"></div>
 
     <h1>PHOENIX GAME</h1>
     <div class="subtitle">HOST 7.00 - 9.60</div>
@@ -116,7 +104,6 @@
     </div>
 
     <script>
-        // Function to print logs to the console box
         function printMsg(text) {
             const msgDiv = document.getElementById("messages");
             msgDiv.innerHTML += "<div class='log-entry'>> " + text + "</div>";
@@ -124,21 +111,15 @@
             box.scrollTop = box.scrollHeight;
         }
 
-        // Exploit trigger function
         function startExploit() {
             document.getElementById("messages").innerHTML = ""; 
             printMsg("Initializing PHOENIX GAME Host..."); 
-            
             try {
-                // Calls the main function from psfree.js
-                setTimeout(function() {
-                    run_psfree(); 
-                }, 500);
+                setTimeout(function() { run_psfree(); }, 500);
             } catch(e) {
-                printMsg("Error: psfree.js not found or failed to load.");
+                printMsg("Error: Script files missing.");
             }
         }
     </script>
-
 </body>
 </html>
