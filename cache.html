@@ -1,1 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" manifest="psfree_lapse.cache">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PHOENIX GAME - Installing Cache</title>
+    <style>
+        body {
+            background-color: #000000;
+            background-image: url('icon0.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+            color: #ffd700; /* Golden Color */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Title with Golden Glow */
+        h1 {
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+        }
+
+        /* Progress Container */
+        #progress-container {
+            width: 80%;
+            max-width: 420px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            border: 1px solid #333;
+            overflow: hidden;
+        }
+
+        /* Fire & Gold Gradient Bar */
+        #progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #ff4500, #ffd700);
+            box-shadow: 0 0 20px #ff4500;
+            transition: width 0.4s ease;
+        }
+
+        #status {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #ffffff;
+            font-family: monospace;
+            letter-spacing: 1px;
+        }
+
+        /* Pulsing Effect */
+        .loading-text {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; }
+            100% { opacity: 0.4; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="loading-text">Phoenix Game</h1>
+    
+    <div id="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+
+    <div id="status">Installing Offline Cache: <span id="percentage">0%</span></div>
+
+    <script>
+        // Application Cache Handler
+        var appCache = window.applicationCache;
+
+        appCache.onprogress = function(e) {
+            if (e.lengthComputable) {
+                var percent = Math.round((e.loaded / e.total) * 100);
+                document.getElementById('progress-bar').style.width = percent + '%';
+                document.getElementById('percentage').innerHTML = percent + '%';
+            }
+        };
+
+        appCache.oncached = function() {
+            document.getElementById('status').innerHTML = "Installation Complete! Loading...";
+            setTimeout(function(){ location.href = "index.html"; }, 2000);
+        };
+
+        appCache.onupdateready = function() {
+            appCache.swapCache();
+            location.reload();
+        };
+
+        appCache.onerror = function() {
+            document.getElementById('status').innerHTML = "Error: Check connection and try again.";
+        };
+    </script>
+
+</body>
+</html>
 
