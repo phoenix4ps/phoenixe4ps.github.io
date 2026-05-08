@@ -1,11 +1,13 @@
 CACHE MANIFEST
-# v1.0 - Phoenix Game Host
+# v1.5 - Phoenix Game Animated Host
+# This file allows the host to work offline.
 
 index.html
+cache.html
 psfree.js
 psfree_lapse_shared.js
 payload.bin
+icon0.png
 
 NETWORK:
 *
-
