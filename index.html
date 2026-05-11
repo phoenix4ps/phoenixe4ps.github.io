@@ -10,11 +10,16 @@
 
     <style>
         body {
+            background-image: url('bg.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
             background-color: #000000;
             color: #cccccc;
             font-family: Arial, sans-serif;
             margin: 0;
-            padding-top: 15px;
+            padding-top: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -22,69 +27,87 @@
             overflow: hidden;
         }
 
-        /* Isolated Phoenix layer for specific glowing effect */
         .phoenix-layer {
             position: fixed;
-            top: 55%;
+            top: 45%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 320px;
-            height: 320px;
+            width: 280px;
+            height: 280px;
             background-image: url('icon0.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            z-index: -1; 
-            animation: phoenix-pulse-glow 3s infinite ease-in-out;
+            z-index: 1; 
+            animation: phoenix-pulse-glow 2.5s infinite ease-in-out;
         }
 
         @keyframes phoenix-pulse-glow {
-            0% { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.4)); opacity: 0.8; }
-            50% { filter: drop-shadow(0 0 35px rgba(255, 140, 0, 0.9)); opacity: 1; }
-            100% { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.4)); opacity: 0.8; }
+            0% { filter: drop-shadow(0 0 10px rgba(255, 140, 0, 0.6)); opacity: 0.9; transform: translate(-50%, -50%) scale(1); }
+            50% { filter: drop-shadow(0 0 40px rgba(255, 69, 0, 1)); opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+            100% { filter: drop-shadow(0 0 10px rgba(255, 140, 0, 0.6)); opacity: 0.9; transform: translate(-50%, -50%) scale(1); }
         }
 
         h1 {
             color: #ffffff;
-            font-size: 18px;
-            margin: 0;
+            font-size: 22px;
+            margin-top: 10px;
             text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            text-shadow: 0 0 15px rgba(255, 140, 0, 0.8);
+            z-index: 10;
         }
 
         .subtitle {
-            color: #888;
+            color: #aaaaaa;
             font-size: 11px;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            z-index: 10;
         }
 
         #jailbreak-btn {
-            background-color: #005cf8;
-            color: white;
-            padding: 6px 25px;
-            border: 1px solid #0046bc;
-            border-radius: 4px;
-            font-size: 12px;
+            background-color: rgba(0, 92, 248, 0.1); 
+            color: #005cf8;
+            width: 75px; 
+            height: 75px;
+            border: 3px solid #005cf8; 
+            border-radius: 50%; 
+            font-size: 22px;   
             font-weight: bold;
+            font-family: "Arial Black", sans-serif;
             cursor: pointer;
-            margin-bottom: 12px;
+            margin-bottom: 25px;
             z-index: 10;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 92, 248, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        #jailbreak-btn:active {
+            transform: scale(0.9);
+            background-color: #005cf8;
+            color: #ffffff;
+            box-shadow: 0 0 30px rgba(0, 92, 248, 1);
         }
 
         #console-box {
-            background-color: rgba(10, 10, 10, 0.9);
-            border: 1px solid #333;
-            width: 90%; 
-            max-width: 450px;
-            height: 90px;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 85%;
+            max-width: 320px;
+            height: 65px;
             padding: 10px;
             font-family: monospace;
-            text-align: left;
-            font-size: 11px;
-            color: #aaa;
+            font-size: 10px;
+            color: #00ffcc;
             z-index: 10;
             overflow-y: auto;
+            border-radius: 12px;
         }
 
         .log-entry { margin: 2px 0; }
@@ -97,10 +120,10 @@
     <h1>PHOENIX GAME</h1>
     <div class="subtitle">HOST 7.00 - 9.60</div>
 
-    <button id="jailbreak-btn" onclick="startExploit()">Start Jailbreak</button>
+    <button id="jailbreak-btn" onclick="startExploit()">PS</button>
 
     <div id="console-box">
-        <div id="messages">Waiting for input...</div>
+        <div id="messages">System Ready...</div>
     </div>
 
     <script>
@@ -113,11 +136,11 @@
 
         function startExploit() {
             document.getElementById("messages").innerHTML = ""; 
-            printMsg("Initializing PHOENIX GAME Host..."); 
+            printMsg("Initializing PHOENIX GAME..."); 
             try {
                 setTimeout(function() { run_psfree(); }, 500);
             } catch(e) {
-                printMsg("Error: Script files missing.");
+                printMsg("Error: Script missing.");
             }
         }
     </script>
