@@ -9,31 +9,36 @@
     <script src="psfree.js"></script>
 
     <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
         body {
             background-image: url('bg.jpg'); 
             background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-position: center center;
             background-repeat: no-repeat;
+            background-attachment: fixed;
             background-color: #000000;
-            color: #cccccc;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding-top: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
-            overflow: hidden;
+            justify-content: flex-start;
+            padding-top: 30px;
+            font-family: Arial, sans-serif;
         }
 
         .phoenix-layer {
             position: fixed;
-            top: 45%;
+            top: 48%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 280px;
-            height: 280px;
+            width: 260px;
+            height: 260px;
             background-image: url('icon0.png');
             background-size: contain;
             background-repeat: no-repeat;
@@ -50,8 +55,8 @@
 
         h1 {
             color: #ffffff;
-            font-size: 22px;
-            margin-top: 10px;
+            font-size: 20px;
+            margin: 10px 0 5px 0;
             text-transform: uppercase;
             text-shadow: 0 0 15px rgba(255, 140, 0, 0.8);
             z-index: 10;
@@ -59,55 +64,56 @@
 
         .subtitle {
             color: #aaaaaa;
-            font-size: 11px;
-            margin-bottom: 20px;
+            font-size: 10px;
+            margin-bottom: 15px;
             letter-spacing: 2px;
             z-index: 10;
         }
 
         #jailbreak-btn {
-            background-color: rgba(0, 92, 248, 0.1); 
+            background-color: rgba(0, 92, 248, 0.15); 
             color: #005cf8;
-            width: 75px; 
-            height: 75px;
+            width: 70px; 
+            height: 70px;
             border: 3px solid #005cf8; 
             border-radius: 50%; 
-            font-size: 22px;   
+            font-size: 20px;   
             font-weight: bold;
-            font-family: "Arial Black", sans-serif;
             cursor: pointer;
-            margin-bottom: 25px;
             z-index: 10;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(0, 92, 248, 0.6);
+            transition: all 0.2s ease;
+            box-shadow: 0 0 15px rgba(0, 92, 248, 0.5);
             display: flex;
             align-items: center;
             justify-content: center;
             outline: none;
             -webkit-tap-highlight-color: transparent;
+            margin-bottom: 20px;
         }
 
         #jailbreak-btn:active {
-            transform: scale(0.9);
+            transform: scale(0.85);
             background-color: #005cf8;
             color: #ffffff;
-            box-shadow: 0 0 30px rgba(0, 92, 248, 1);
+            box-shadow: 0 0 25px rgba(0, 92, 248, 1);
         }
 
         #console-box {
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(8px);
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            width: 85%;
-            max-width: 320px;
-            height: 65px;
-            padding: 10px;
+            width: 80%;
+            max-width: 300px;
+            height: 60px;
+            padding: 8px;
             font-family: monospace;
             font-size: 10px;
             color: #00ffcc;
             z-index: 10;
             overflow-y: auto;
-            border-radius: 12px;
+            border-radius: 10px;
+            position: absolute;
+            bottom: 40px;
         }
 
         .log-entry { margin: 2px 0; }
