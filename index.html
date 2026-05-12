@@ -19,12 +19,13 @@
         }
 
         body {
-            /* Full background fix */
+            /* Full Wallpaper Fix */
             background-image: url('bg.jpg'); 
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
             background-attachment: fixed;
+            
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -35,25 +36,25 @@
 
         .phoenix-layer {
             position: fixed;
-            top: 50%;
+            top: 45%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 300px;
-            height: 300px;
+            width: 280px;
+            height: 280px;
             background-image: url('icon0.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
             z-index: 1;
-            /* This line removes the black square background */
+            /* Removes Black Square from phoenix image */
             mix-blend-mode: screen; 
             animation: phoenix-pulse-glow 2.5s infinite ease-in-out;
         }
 
         @keyframes phoenix-pulse-glow {
-            0% { filter: drop-shadow(0 0 15px rgba(255, 69, 0, 0.5)); opacity: 0.9; }
-            50% { filter: drop-shadow(0 0 40px rgba(255, 69, 0, 1)); opacity: 1; }
-            100% { filter: drop-shadow(0 0 15px rgba(255, 69, 0, 0.5)); opacity: 0.9; }
+            0% { filter: drop-shadow(0 0 15px rgba(255, 69, 0, 0.6)); opacity: 0.9; transform: translate(-50%, -50%) scale(1); }
+            50% { filter: drop-shadow(0 0 45px rgba(255, 69, 0, 1)); opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+            100% { filter: drop-shadow(0 0 15px rgba(255, 69, 0, 0.6)); opacity: 0.9; transform: translate(-50%, -50%) scale(1); }
         }
 
         h1 {
@@ -74,34 +75,36 @@
         }
 
         #jailbreak-btn {
-            background-color: rgba(0, 92, 248, 0.1); 
+            background-color: rgba(0, 92, 248, 0.15); 
             color: #005cf8;
-            width: 65px; 
-            height: 65px;
-            border: 2px solid #005cf8; 
+            width: 70px; 
+            height: 70px;
+            border: 3px solid #005cf8; 
             border-radius: 50%; 
-            font-size: 18px;   
+            font-size: 20px;   
             font-weight: bold;
             cursor: pointer;
             z-index: 10;
-            transition: 0.2s;
-            box-shadow: 0 0 15px rgba(0, 92, 248, 0.4);
+            transition: all 0.2s ease;
+            box-shadow: 0 0 15px rgba(0, 92, 248, 0.5);
             display: flex;
             align-items: center;
             justify-content: center;
             outline: none;
             -webkit-tap-highlight-color: transparent;
+            margin-bottom: 20px;
         }
 
         #jailbreak-btn:active {
             transform: scale(0.9);
             background-color: #005cf8;
-            color: #fff;
+            color: #ffffff;
+            box-shadow: 0 0 30px rgba(0, 92, 248, 1);
         }
 
         #console-box {
             background-color: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             width: 85%;
             max-width: 320px;
@@ -111,7 +114,7 @@
             font-size: 10px;
             color: #00ffcc;
             z-index: 10;
-            border-radius: 10px;
+            border-radius: 12px;
             position: absolute;
             bottom: 30px;
         }
