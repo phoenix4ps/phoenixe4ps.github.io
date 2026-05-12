@@ -19,10 +19,10 @@
         }
 
         body {
-            /* Full Wallpaper Fix */
+            /* Fix Background to show all content */
             background-image: url('bg.jpg'); 
-            background-size: cover;
-            background-position: center center;
+            background-size: 100% 100%; /* Stretch to fit screen exactly */
+            background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
             
@@ -30,36 +30,36 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            padding-top: 20px;
+            padding-top: 25px;
             font-family: Arial, sans-serif;
         }
 
         .phoenix-layer {
             position: fixed;
-            top: 45%;
+            top: 48%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 280px;
-            height: 280px;
+            /* Adjusted size for better visibility */
+            width: 240px; 
+            height: 240px;
             background-image: url('icon0.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
             z-index: 1;
-            /* Removes Black Square from phoenix image */
-            mix-blend-mode: screen; 
+            /* Glowing animation */
             animation: phoenix-pulse-glow 2.5s infinite ease-in-out;
         }
 
         @keyframes phoenix-pulse-glow {
-            0% { filter: drop-shadow(0 0 15px rgba(255, 69, 0, 0.6)); opacity: 0.9; transform: translate(-50%, -50%) scale(1); }
-            50% { filter: drop-shadow(0 0 45px rgba(255, 69, 0, 1)); opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
-            100% { filter: drop-shadow(0 0 15px rgba(255, 69, 0, 0.6)); opacity: 0.9; transform: translate(-50%, -50%) scale(1); }
+            0% { filter: drop-shadow(0 0 10px rgba(255, 69, 0, 0.6)); transform: translate(-50%, -50%) scale(1); }
+            50% { filter: drop-shadow(0 0 35px rgba(255, 69, 0, 1)); transform: translate(-50%, -50%) scale(1.03); }
+            100% { filter: drop-shadow(0 0 10px rgba(255, 69, 0, 0.6)); transform: translate(-50%, -50%) scale(1); }
         }
 
         h1 {
             color: #ffffff;
-            font-size: 22px;
+            font-size: 20px;
             margin: 10px 0 2px 0;
             text-transform: uppercase;
             text-shadow: 0 0 15px rgba(255, 140, 0, 0.8);
@@ -69,57 +69,55 @@
         .subtitle {
             color: #aaaaaa;
             font-size: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             letter-spacing: 2px;
             z-index: 10;
         }
 
         #jailbreak-btn {
-            background-color: rgba(0, 92, 248, 0.15); 
+            background-color: rgba(0, 92, 248, 0.2); 
             color: #005cf8;
-            width: 70px; 
-            height: 70px;
+            width: 65px; 
+            height: 65px;
             border: 3px solid #005cf8; 
             border-radius: 50%; 
-            font-size: 20px;   
+            font-size: 18px;   
             font-weight: bold;
             cursor: pointer;
             z-index: 10;
-            transition: all 0.2s ease;
+            transition: 0.2s;
             box-shadow: 0 0 15px rgba(0, 92, 248, 0.5);
             display: flex;
             align-items: center;
             justify-content: center;
             outline: none;
             -webkit-tap-highlight-color: transparent;
-            margin-bottom: 20px;
         }
 
         #jailbreak-btn:active {
             transform: scale(0.9);
             background-color: #005cf8;
-            color: #ffffff;
-            box-shadow: 0 0 30px rgba(0, 92, 248, 1);
+            color: #fff;
         }
 
         #console-box {
-            background-color: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(8px);
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            width: 85%;
-            max-width: 320px;
-            height: 60px;
+            width: 82%;
+            max-width: 310px;
+            height: 55px;
             padding: 8px;
             font-family: monospace;
-            font-size: 10px;
+            font-size: 9px;
             color: #00ffcc;
             z-index: 10;
-            border-radius: 12px;
+            border-radius: 10px;
             position: absolute;
-            bottom: 30px;
+            bottom: 35px;
         }
 
-        .log-entry { margin: 2px 0; }
+        .log-entry { margin: 1px 0; }
     </style>
 </head>
 <body>
@@ -145,7 +143,7 @@
 
         function startExploit() {
             document.getElementById("messages").innerHTML = ""; 
-            printMsg("Initializing..."); 
+            printMsg("Initializing Host..."); 
             try {
                 setTimeout(function() { run_psfree(); }, 500);
             } catch(e) {
