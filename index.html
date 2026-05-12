@@ -28,14 +28,14 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            padding-top: 20px;
+            padding-top: 15px;
             font-family: Arial, sans-serif;
         }
 
-        /* 1. TOP TEXT (PHOENIX HOST) */
+        /* 1. TOP HEADER */
         h1 {
             color: #ffffff;
-            font-size: 20px;
+            font-size: 18px;
             margin: 0;
             text-transform: uppercase;
             text-shadow: 0 0 15px rgba(255, 140, 0, 0.8);
@@ -45,35 +45,35 @@
         .subtitle {
             color: #aaaaaa;
             font-size: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             letter-spacing: 2px;
             z-index: 10;
         }
 
-        /* 2. PS BUTTON */
+        /* 2. START BUTTON */
         #jailbreak-btn {
             background-color: rgba(0, 92, 248, 0.15); 
             color: #005cf8;
-            width: 60px; 
-            height: 60px;
+            width: 55px; 
+            height: 55px;
             border: 2px solid #005cf8; 
             border-radius: 50%; 
-            font-size: 18px;   
+            font-size: 16px;   
             font-weight: bold;
             cursor: pointer;
             z-index: 10;
             box-shadow: 0 0 15px rgba(0, 92, 248, 0.5);
-            margin-bottom: 5px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             outline: none;
         }
 
-        /* 3. CENTER PHOENIX (Fixed Glow) */
+        /* 3. CENTER PHOENIX */
         .phoenix-container {
-            width: 200px; 
-            height: 200px;
+            width: 190px; 
+            height: 190px;
             z-index: 1;
             mix-blend-mode: screen; 
             animation: pulse-glow-only 2.5s infinite ease-in-out;
@@ -94,20 +94,10 @@
             100% { filter: drop-shadow(0 0 10px rgba(255, 69, 0, 0.6)); }
         }
 
-        /* 4. BOTTOM WRITING (wri.png) */
-        .writing-layer {
-            width: 250px;
-            height: auto;
-            object-fit: contain;
-            z-index: 10;
-            filter: drop-shadow(0 0 10px #ffd700) drop-shadow(0 0 20px #ff8c00);
-            margin-top: -10px;
-        }
-
-        /* SIDE BUTTONS */
+        /* 4. SIDE BUTTONS (LEFT & RIGHT) */
         .side-wrapper {
             position: fixed;
-            top: 50%;
+            top: 48%; /* محاذاة مع العنقاء */
             transform: translateY(-50%);
             display: flex;
             gap: 15px;
@@ -117,12 +107,23 @@
         .right-side { right: 5%; }
 
         .ps-icon-side {
-            width: 30px;
-            height: 30px;
-            filter: drop-shadow(0 0 10px rgba(0, 92, 248, 0.8));
+            width: 32px;
+            height: 32px;
+            filter: drop-shadow(0 0 10px rgba(0, 92, 248, 0.7));
         }
 
-        /* CONSOLE BOX */
+        /* 5. WRITING AT THE BOTTOM */
+        .writing-layer {
+            position: fixed;
+            bottom: 95px; /* فوق مربع النصوص */
+            width: 240px;
+            height: auto;
+            object-fit: contain;
+            z-index: 10;
+            filter: drop-shadow(0 0 10px #ffd700) drop-shadow(0 0 20px #ff8c00);
+        }
+
+        /* 6. CONSOLE BOX */
         #console-box {
             background-color: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(8px);
@@ -137,7 +138,7 @@
             z-index: 10;
             border-radius: 10px;
             position: absolute;
-            bottom: 20px;
+            bottom: 30px;
         }
     </style>
 </head>
@@ -148,12 +149,12 @@
 
     <button id="jailbreak-btn" onclick="startExploit()">PS</button>
 
+    <!-- CENTER -->
     <div class="phoenix-container">
         <div class="phoenix-layer"></div>
     </div>
 
-    <img src="wri.png" class="writing-layer">
-
+    <!-- SIDES -->
     <div class="side-wrapper left-side">
         <img src="tri.png" class="ps-icon-side">
         <img src="squ.png" class="ps-icon-side">
@@ -162,6 +163,9 @@
         <img src="cir.png" class="ps-icon-side">
         <img src="cro.png" class="ps-icon-side">
     </div>
+
+    <!-- BOTTOM WRITING -->
+    <img src="wri.png" class="writing-layer">
 
     <div id="console-box">
         <div id="messages">System Ready...</div>
