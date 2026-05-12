@@ -20,27 +20,26 @@
 
         body {
             background-image: url('bg.jpg'); 
-            background-size: 100% 100%;
-            background-position: center;
+            background-size: cover;
+            background-position: center center;
             background-repeat: no-repeat;
             background-attachment: fixed;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            padding-top: 15px;
+            padding-top: 20px;
             font-family: Arial, sans-serif;
         }
 
-        /* Writing Layer with Golden Glow */
-        .writing-layer {
-            width: 250px;
-            height: auto;
-            object-fit: contain;
+        /* 1. TOP TEXT (PHOENIX HOST) */
+        h1 {
+            color: #ffffff;
+            font-size: 20px;
+            margin: 0;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(255, 140, 0, 0.8);
             z-index: 10;
-            /* Golden Neon Glow matching the Phoenix */
-            filter: drop-shadow(0 0 8px #fff) drop-shadow(0 0 15px #ffd700) drop-shadow(0 0 30px #ff8c00);
-            margin-bottom: 5px;
         }
 
         .subtitle {
@@ -49,18 +48,35 @@
             margin-bottom: 10px;
             letter-spacing: 2px;
             z-index: 10;
-            text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
         }
 
-        /* Phoenix Layer */
+        /* 2. PS BUTTON */
+        #jailbreak-btn {
+            background-color: rgba(0, 92, 248, 0.15); 
+            color: #005cf8;
+            width: 60px; 
+            height: 60px;
+            border: 2px solid #005cf8; 
+            border-radius: 50%; 
+            font-size: 18px;   
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 0 15px rgba(0, 92, 248, 0.5);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            outline: none;
+        }
+
+        /* 3. CENTER PHOENIX (Fixed Glow) */
         .phoenix-container {
-            position: fixed;
-            top: 48%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             width: 200px; 
             height: 200px;
             z-index: 1;
+            mix-blend-mode: screen; 
+            animation: pulse-glow-only 2.5s infinite ease-in-out;
         }
 
         .phoenix-layer {
@@ -70,98 +86,78 @@
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            animation: pulse-glow-only 2.5s infinite ease-in-out;
         }
 
         @keyframes pulse-glow-only {
-            0% { filter: drop-shadow(0 0 12px rgba(255, 140, 0, 0.6)); }
-            50% { filter: drop-shadow(0 0 40px rgba(255, 69, 0, 1)); }
-            100% { filter: drop-shadow(0 0 12px rgba(255, 140, 0, 0.6)); }
+            0% { filter: drop-shadow(0 0 10px rgba(255, 69, 0, 0.6)); }
+            50% { filter: drop-shadow(0 0 35px rgba(255, 69, 0, 0.9)); }
+            100% { filter: drop-shadow(0 0 10px rgba(255, 69, 0, 0.6)); }
         }
 
-        /* Stronger Glow for PS Buttons */
+        /* 4. BOTTOM WRITING (wri.png) */
+        .writing-layer {
+            width: 250px;
+            height: auto;
+            object-fit: contain;
+            z-index: 10;
+            filter: drop-shadow(0 0 10px #ffd700) drop-shadow(0 0 20px #ff8c00);
+            margin-top: -10px;
+        }
+
+        /* SIDE BUTTONS */
         .side-wrapper {
             position: fixed;
             top: 50%;
             transform: translateY(-50%);
             display: flex;
-            gap: 18px;
+            gap: 15px;
             z-index: 10;
         }
-
         .left-side { left: 5%; }
         .right-side { right: 5%; }
 
         .ps-icon-side {
-            width: 32px;
-            height: 32px;
-            object-fit: contain;
-            /* Stronger Neon Glow for Buttons */
-            filter: drop-shadow(0 0 12px rgba(0, 92, 248, 0.8)) drop-shadow(0 0 5px #fff);
-            transition: 0.3s;
+            width: 30px;
+            height: 30px;
+            filter: drop-shadow(0 0 10px rgba(0, 92, 248, 0.8));
         }
 
-        .ps-icon-side:active {
-            transform: scale(1.2);
-            filter: drop-shadow(0 0 25px #005cf8);
-        }
-
-        #jailbreak-btn {
-            background-color: rgba(0, 92, 248, 0.15); 
-            color: #005cf8;
-            width: 65px; 
-            height: 65px;
-            border: 3px solid #005cf8; 
-            border-radius: 50%; 
-            font-size: 18px;   
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            outline: none;
-            box-shadow: 0 0 20px rgba(0, 92, 248, 0.6);
-            -webkit-tap-highlight-color: transparent;
-        }
-
+        /* CONSOLE BOX */
         #console-box {
             background-color: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             width: 85%;
             max-width: 320px;
-            height: 50px;
+            height: 45px;
             padding: 8px;
             font-family: monospace;
             font-size: 9px;
             color: #00ffcc;
             z-index: 10;
-            border-radius: 12px;
+            border-radius: 10px;
             position: absolute;
-            bottom: 30px;
+            bottom: 20px;
         }
-
-        .log-entry { margin: 1px 0; }
     </style>
 </head>
 <body>
+
+    <h1>PHOENIX HOST</h1>
+    <div class="subtitle">7.00 - 9.60</div>
+
+    <button id="jailbreak-btn" onclick="startExploit()">PS</button>
 
     <div class="phoenix-container">
         <div class="phoenix-layer"></div>
     </div>
 
-    <!-- The new Writing image with glow -->
     <img src="wri.png" class="writing-layer">
-    <div class="subtitle">HOST 7.00 - 9.60</div>
-
-    <button id="jailbreak-btn" onclick="startExploit()">PS</button>
 
     <div class="side-wrapper left-side">
         <img src="tri.png" class="ps-icon-side">
         <img src="squ.png" class="ps-icon-side">
     </div>
-
     <div class="side-wrapper right-side">
         <img src="cir.png" class="ps-icon-side">
         <img src="cro.png" class="ps-icon-side">
@@ -178,15 +174,12 @@
             const box = document.getElementById("console-box");
             box.scrollTop = box.scrollHeight;
         }
-
         function startExploit() {
             document.getElementById("messages").innerHTML = ""; 
             printMsg("Initializing..."); 
             try {
                 setTimeout(function() { run_psfree(); }, 500);
-            } catch(e) {
-                printMsg("Error!");
-            }
+            } catch(e) { printMsg("Error!"); }
         }
     </script>
 </body>
