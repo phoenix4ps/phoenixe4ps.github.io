@@ -77,6 +77,7 @@
             z-index: 1;
             mix-blend-mode: screen; 
             animation: pulse-glow-only 2.5s infinite ease-in-out;
+            margin-top: 10px;
         }
 
         .phoenix-layer {
@@ -94,28 +95,31 @@
             100% { filter: drop-shadow(0 0 10px rgba(255, 69, 0, 0.6)); }
         }
 
-        /* 4. SIDE BUTTONS (LEFT & RIGHT) */
+        /* 4. SIDE BUTTONS - ALIGNED TO CENTER */
         .side-wrapper {
             position: fixed;
-            top: 48%; /* محاذاة مع العنقاء */
-            transform: translateY(-50%);
+            top: 215px; 
             display: flex;
-            gap: 15px;
+            gap: 20px;
             z-index: 10;
         }
-        .left-side { left: 5%; }
-        .right-side { right: 5%; }
+        .left-side { left: 8%; }
+        .right-side { right: 8%; }
 
         .ps-icon-side {
             width: 32px;
             height: 32px;
-            filter: drop-shadow(0 0 10px rgba(0, 92, 248, 0.7));
         }
 
-        /* 5. WRITING AT THE BOTTOM */
+        /* COLOR GLOW FOR PS SYMBOLS */
+        .tri { filter: drop-shadow(0 0 12px #4caf50); } 
+        .squ { filter: drop-shadow(0 0 12px #e91e63); } 
+        .cir { filter: drop-shadow(0 0 12px #ff5722); } 
+        .cro { filter: drop-shadow(0 0 12px #2196f3); } 
+
+        /* 5. WRITING BELOW PHOENIX */
         .writing-layer {
-            position: fixed;
-            bottom: 95px; /* فوق مربع النصوص */
+            margin-top: -20px; 
             width: 240px;
             height: auto;
             object-fit: contain;
@@ -130,15 +134,16 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             width: 85%;
             max-width: 320px;
-            height: 45px;
+            height: 60px;
             padding: 8px;
             font-family: monospace;
-            font-size: 9px;
+            font-size: 10px;
             color: #00ffcc;
             z-index: 10;
             border-radius: 10px;
             position: absolute;
-            bottom: 30px;
+            bottom: 20px;
+            overflow-y: auto;
         }
     </style>
 </head>
@@ -149,22 +154,19 @@
 
     <button id="jailbreak-btn" onclick="startExploit()">PS</button>
 
-    <!-- CENTER -->
     <div class="phoenix-container">
         <div class="phoenix-layer"></div>
     </div>
 
-    <!-- SIDES -->
     <div class="side-wrapper left-side">
-        <img src="tri.png" class="ps-icon-side">
-        <img src="squ.png" class="ps-icon-side">
+        <img src="tri.png" class="ps-icon-side tri">
+        <img src="squ.png" class="ps-icon-side squ">
     </div>
     <div class="side-wrapper right-side">
-        <img src="cir.png" class="ps-icon-side">
-        <img src="cro.png" class="ps-icon-side">
+        <img src="cir.png" class="ps-icon-side cir">
+        <img src="cro.png" class="ps-icon-side cro">
     </div>
 
-    <!-- BOTTOM WRITING -->
     <img src="wri.png" class="writing-layer">
 
     <div id="console-box">
