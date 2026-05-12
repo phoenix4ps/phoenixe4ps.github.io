@@ -34,11 +34,11 @@
 
         .phoenix-container {
             position: fixed;
-            top: 48%;
+            top: 45%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 240px; 
-            height: 240px;
+            width: 200px; 
+            height: 200px;
             z-index: 1;
         }
 
@@ -49,20 +49,39 @@
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            /* Animation for GLOW ONLY - No Scaling */
-            animation: pulse-glow-only 2s infinite ease-in-out;
+            animation: pulse-glow-only 2.5s infinite ease-in-out;
         }
 
         @keyframes pulse-glow-only {
-            0% { 
-                filter: drop-shadow(0 0 10px rgba(255, 69, 0, 0.5)) drop-shadow(0 0 20px rgba(255, 69, 0, 0.3)); 
-            }
-            50% { 
-                filter: drop-shadow(0 0 30px rgba(255, 69, 0, 0.9)) drop-shadow(0 0 50px rgba(255, 69, 0, 0.6)); 
-            }
-            100% { 
-                filter: drop-shadow(0 0 10px rgba(255, 69, 0, 0.5)) drop-shadow(0 0 20px rgba(255, 69, 0, 0.3)); 
-            }
+            0% { filter: drop-shadow(0 0 10px rgba(255, 69, 0, 0.5)); }
+            50% { filter: drop-shadow(0 0 35px rgba(255, 69, 0, 0.9)); }
+            100% { filter: drop-shadow(0 0 10px rgba(255, 69, 0, 0.5)); }
+        }
+
+        /* Container for side buttons */
+        .side-wrapper {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 15px; /* space between buttons */
+            z-index: 10;
+        }
+
+        .left-side { left: 5%; }
+        .right-side { right: 5%; }
+
+        .ps-icon-side {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(255,255,255,0.2));
+            transition: 0.3s;
+        }
+
+        .ps-icon-side:active {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 15px #005cf8);
         }
 
         h1 {
@@ -83,7 +102,7 @@
         }
 
         #jailbreak-btn {
-            background-color: rgba(0, 92, 248, 0.2); 
+            background-color: rgba(0, 92, 248, 0.15); 
             color: #005cf8;
             width: 65px; 
             height: 65px;
@@ -93,19 +112,13 @@
             font-weight: bold;
             cursor: pointer;
             z-index: 10;
-            transition: 0.2s;
-            box-shadow: 0 0 15px rgba(0, 92, 248, 0.5);
             display: flex;
             align-items: center;
             justify-content: center;
             outline: none;
+            box-shadow: 0 0 15px rgba(0, 92, 248, 0.5);
             -webkit-tap-highlight-color: transparent;
-        }
-
-        #jailbreak-btn:active {
-            transform: scale(0.9);
-            background-color: #005cf8;
-            color: #ffffff;
+            margin-bottom: 20px;
         }
 
         #console-box {
@@ -114,7 +127,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             width: 82%;
             max-width: 310px;
-            height: 55px;
+            height: 50px;
             padding: 8px;
             font-family: monospace;
             font-size: 9px;
@@ -122,7 +135,7 @@
             z-index: 10;
             border-radius: 10px;
             position: absolute;
-            bottom: 35px;
+            bottom: 30px;
         }
 
         .log-entry { margin: 1px 0; }
@@ -139,6 +152,18 @@
 
     <button id="jailbreak-btn" onclick="startExploit()">PS</button>
 
+    <!-- Left side: Triangle and Square next to each other -->
+    <div class="side-wrapper left-side">
+        <img src="tri.png" class="ps-icon-side">
+        <img src="squ.png" class="ps-icon-side">
+    </div>
+
+    <!-- Right side: Circle and Cross next to each other -->
+    <div class="side-wrapper right-side">
+        <img src="cir.png" class="ps-icon-side">
+        <img src="cro.png" class="ps-icon-side">
+    </div>
+
     <div id="console-box">
         <div id="messages">System Ready...</div>
     </div>
@@ -153,7 +178,7 @@
 
         function startExploit() {
             document.getElementById("messages").innerHTML = ""; 
-            printMsg("Initializing..."); 
+            printMsg("Initializing Host..."); 
             try {
                 setTimeout(function() { run_psfree(); }, 500);
             } catch(e) {
